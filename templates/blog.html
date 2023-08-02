@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ section.title }} Page-{{ paginator.current_index }} - {{ config.title }}</title>
+{% endblock title %}
+
+{% block header %}
+<header>
+<div class="site-title"><a href="{{ config.base_url | safe }}/">{{ config.title }}</a></div>
+<p class="site-description">{{ config.description }}</p>
+</header>
+{% endblock header %}
+
+{% block content %}
+<h1 class="title">{{ section.title }} Page-{{ paginator.current_index }}</h1>
+
+<div class="meta">Total: {{ paginator.number_pagers }}ページ</div>
+
+<ul class="list-none p0">
+{% for page in paginator.pages %}
+  <li><span class="date">{{ page.date | date(format="%Y-%m-%d") }}</span> <a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+{% endfor %}
+</ul>
+
+{% if paginator.previous %}
+  <a class="prev pure-button" href="{{ paginator.previous | safe }}">‹ Previous</a>
+{% endif %}
+{% if paginator.next %}
+<a class="next pure-button" href="{{ paginator.next | safe }}">Next ›</a>
+{% endif %}
+{% endblock content %}

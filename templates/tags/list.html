@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Tags - {{config.title}}</title>
+{% endblock title %}
+
+{% block header %}
+<header>
+<div class="site-title"><a href="{{ config.base_url | safe }}/">{{ config.title }}</a></div>
+<p class="site-description">{{ config.description }}</p>
+</header>
+{% endblock header %}
+
+{% block content %}
+<h1 class="title">タグ</h1>
+
+<ul>
+{% for tag in terms %}
+  <li><a href="{{ tag.permalink | safe }}">{{ tag.name }}</a> (<span class="count">{{ tag.pages | length }}</span>)</li>
+{% endfor %}
+</ul>
+{% endblock content %}

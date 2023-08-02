@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+  <title>{{ config.title }}</title>
+{% endblock title %}
+
+{% include "_style.html" %}
+{% include "_analytics.html" %}
+</head>
+
+<body>
+
+<div id="layout" class="pure-g">
+
+  <main id="main" class="pure-u-1 pure-u-md-1 pure-u-lg-5-8">
+
+{% block header %}
+<header>
+<div class="site-title"><a href="{{ config.base_url | safe }}/">{{ config.title }}</a></div>
+<p class="site-description">{{ config.description }}</p>
+</header>
+{% endblock header %}
+
+<div class="site-img"><img src="{{ config.base_url | safe }}/img/site-img.jpg" alt="{{ config.title }}"></div>
+
+{% include "_menu.html" %}
+
+<div class="content">
+      {% block content %} {% endblock %}
+</div><!-- /.content -->
+
+{% block paging %}
+{% endblock paging %}
+
+  </main><!-- /main -->
+
+
+{% include "_sidebar.html" %}
+
+</div><!-- /.pure-g -->
+
+</body>
+</html>

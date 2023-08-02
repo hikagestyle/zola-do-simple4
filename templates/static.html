@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ page.title }} - {{config.title}}</title>
+{% endblock title %}
+
+{% block header %}
+<header>
+<div class="site-title"><a href="{{ config.base_url | safe }}/">{{ config.title }}</a></div>
+<p class="site-description">{{ config.description }}</p>
+</header>
+{% endblock header %}
+
+{% block content %}
+<h1 class="title">{{ page.title }}</h1>
+
+<!-- 
+<div class="date">{{ page.date | date(format="%Y-%m-%d") }}</div>
+ -->
+
+{{ page.content | safe }}
+{% endblock content %}
